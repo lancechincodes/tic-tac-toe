@@ -23,6 +23,8 @@ main {
 
 .square {
     border: 1px white solid;
+    font-size: 150px;
+    text-align: center;
 }
 
 .grid-container {
