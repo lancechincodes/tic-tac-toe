@@ -5,6 +5,7 @@ const MAX_TURNS = 9
 let turn = 'X'
 let xPlayer = []
 let oPlayer = []
+let winnerDeclared = false;
 
 // CACHED ELEMENT REFERENCES
 const gridContainer = document.querySelector('.grid-container')
@@ -36,6 +37,7 @@ const resetGame = function() {
     sq22.innerText = ""
     xPlayer = []
     oPlayer = []
+    winnerDeclared = false;
     playerTurn.innerText = "It is Player X's turn."
 }
 
@@ -51,7 +53,7 @@ const switchTurn = function() {
 }
 
 const placeMarker = function(e) {
-    if (!e.target.innerText) { // if square does NOT have text
+    if (!e.target.innerText && winnerDeclared === false) { // if square does NOT have text
         if (turn === 'O') {
             e.target.innerText = 'O'
             oPlayer.push(e.target.id)
@@ -62,7 +64,7 @@ const placeMarker = function(e) {
         }
         switchTurn()
     }
-    else { // if square already has text
+    else if (winnerDeclared === false) { // if square already has text
         warningMessage.classList.remove('hide')
         setTimeout(() => warningMessage.classList.add('hide'), 1500)
     }
@@ -72,11 +74,13 @@ const placeMarker = function(e) {
 const checkWin = function() {
     if ((oPlayer.includes('sq00') && oPlayer.includes('sq01') && oPlayer.includes('sq02')) || (oPlayer.includes('sq10') && oPlayer.includes('sq11') && oPlayer.includes('sq12')) || (oPlayer.includes('sq20') && oPlayer.includes('sq21') && oPlayer.includes('sq22')) || (oPlayer.includes('sq00') && oPlayer.includes('sq11') && oPlayer.includes('sq22')) || (oPlayer.includes('sq02') && oPlayer.includes('sq11') && oPlayer.includes('sq20')) || (oPlayer.includes('sq00') && oPlayer.includes('sq10') && oPlayer.includes('sq20')) || (oPlayer.includes('sq01') && oPlayer.includes('sq11') && oPlayer.includes('sq21')) || (oPlayer.includes('sq02') && oPlayer.includes('sq12') && oPlayer.includes('sq22')))
     {
+        winnerDeclared = true
         playerTurn.innerText = "Player O Wins!"
         setTimeout(resetGame, 3000)
     }
     else if ((xPlayer.includes('sq00') && xPlayer.includes('sq01') && xPlayer.includes('sq02')) || (xPlayer.includes('sq10') && xPlayer.includes('sq11') && xPlayer.includes('sq12')) || (xPlayer.includes('sq20') && xPlayer.includes('sq21') && xPlayer.includes('sq22')) || (xPlayer.includes('sq00') && xPlayer.includes('sq11') && xPlayer.includes('sq22')) || (xPlayer.includes('sq02') && xPlayer.includes('sq11') && xPlayer.includes('sq20')) || (xPlayer.includes('sq00') && xPlayer.includes('sq10') && xPlayer.includes('sq20')) || (xPlayer.includes('sq01') && xPlayer.includes('sq11') && xPlayer.includes('sq21')) || (xPlayer.includes('sq02') && xPlayer.includes('sq12') && xPlayer.includes('sq22'))) 
     {
+        winnerDeclared = true
         playerTurn.innerText = "Player X Wins!"
         setTimeout(resetGame, 3000)
     }
