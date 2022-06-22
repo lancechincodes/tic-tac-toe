@@ -1,6 +1,9 @@
+- Create 3x3 grid
+- Wireframe (HTML/CSS)
+    - header
+    - main (grid)
+    - footer (turn and reset)
 - Show the main game 
-- Create 9 divs 
-    - arrange into 3x3 grid 
 - Add event listeners to each div 
 - While board is not filled out
     - iterate between player 1 and player 2 
