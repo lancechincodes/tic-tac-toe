@@ -24,6 +24,7 @@ const warningMessage = document.querySelector('#warning-message')
 
 // FUNCTIONS
 const resetGame = function() {
+    turn = 'X'
     sq00.innerText = ""
     sq01.innerText = ""
     sq02.innerText = ""
@@ -33,6 +34,9 @@ const resetGame = function() {
     sq20.innerText = ""
     sq21.innerText = ""
     sq22.innerText = ""
+    xPlayer = []
+    oPlayer = []
+    playerTurn.innerText = "It is Player X's turn."
 }
 
 const switchTurn = function() {
@@ -69,12 +73,12 @@ const checkWin = function() {
     if ((oPlayer.includes('sq00') && oPlayer.includes('sq01') && oPlayer.includes('sq02')) || (oPlayer.includes('sq10') && oPlayer.includes('sq11') && oPlayer.includes('sq12')) || (oPlayer.includes('sq20') && oPlayer.includes('sq21') && oPlayer.includes('sq22')) || (oPlayer.includes('sq00') && oPlayer.includes('sq11') && oPlayer.includes('sq22')) || (oPlayer.includes('sq02') && oPlayer.includes('sq11') && oPlayer.includes('sq20')) || (oPlayer.includes('sq00') && oPlayer.includes('sq10') && oPlayer.includes('sq20')) || (oPlayer.includes('sq01') && oPlayer.includes('sq11') && oPlayer.includes('sq21')) || (oPlayer.includes('sq02') && oPlayer.includes('sq12') && oPlayer.includes('sq22')))
     {
         playerTurn.innerText = "Player O Wins!"
-
+        setTimeout(resetGame, 3000)
     }
     else if ((xPlayer.includes('sq00') && xPlayer.includes('sq01') && xPlayer.includes('sq02')) || (xPlayer.includes('sq10') && xPlayer.includes('sq11') && xPlayer.includes('sq12')) || (xPlayer.includes('sq20') && xPlayer.includes('sq21') && xPlayer.includes('sq22')) || (xPlayer.includes('sq00') && xPlayer.includes('sq11') && xPlayer.includes('sq22')) || (xPlayer.includes('sq02') && xPlayer.includes('sq11') && xPlayer.includes('sq20')) || (xPlayer.includes('sq00') && xPlayer.includes('sq10') && xPlayer.includes('sq20')) || (xPlayer.includes('sq01') && xPlayer.includes('sq11') && xPlayer.includes('sq21')) || (xPlayer.includes('sq02') && xPlayer.includes('sq12') && xPlayer.includes('sq22'))) 
     {
         playerTurn.innerText = "Player X Wins!"
-
+        setTimeout(resetGame, 3000)
     }
 }
 
