@@ -34,3 +34,11 @@ main {
     justify-content: center;
     align-content: center;
 }
+
+#warning-message {
+    color: yellow;
+}
+
+.hide {
+    display: none;
+}
