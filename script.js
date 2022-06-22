@@ -3,6 +3,8 @@ const MAX_TURNS = 9
 
 // STATE VARIABLES
 let turn = 'X'
+let xPlayer = []
+let oPlayer = []
 
 // CACHED ELEMENT REFERENCES
 const gridContainer = document.querySelector('.grid-container')
@@ -44,14 +46,15 @@ const switchTurn = function() {
     }
 }
 
-const handleSq = function(e) {
-    console.log(e.target.innerText)
+const placeMarker = function(e) {
     if (!e.target.innerText) { // if square does NOT have text
         if (turn === 'O') {
             e.target.innerText = 'O'
+            oPlayer.push(e.target.id)
         }
         else if (turn === 'X') {
             e.target.innerText = 'X'
+            xPlayer.push(e.target.id)
         }
         switchTurn()
     }
@@ -59,6 +62,24 @@ const handleSq = function(e) {
         warningMessage.classList.remove('hide')
         setTimeout(() => warningMessage.classList.add('hide'), 1500)
     }
+    checkWin()
+}
+
+const checkWin = function() {
+    if ((oPlayer.includes('sq00') && oPlayer.includes('sq01') && oPlayer.includes('sq02')) || (oPlayer.includes('sq10') && oPlayer.includes('sq11') && oPlayer.includes('sq12')) || (oPlayer.includes('sq20') && oPlayer.includes('sq21') && oPlayer.includes('sq22')) || (oPlayer.includes('sq00') && oPlayer.includes('sq11') && oPlayer.includes('sq22')) || (oPlayer.includes('sq02') && oPlayer.includes('sq11') && oPlayer.includes('sq20')) || (oPlayer.includes('sq00') && oPlayer.includes('sq10') && oPlayer.includes('sq20')) || (oPlayer.includes('sq01') && oPlayer.includes('sq11') && oPlayer.includes('sq21')) || (oPlayer.includes('sq02') && oPlayer.includes('sq12') && oPlayer.includes('sq22')))
+    {
+        playerTurn.innerText = "Player O Wins!"
+
+    }
+    else if ((xPlayer.includes('sq00') && xPlayer.includes('sq01') && xPlayer.includes('sq02')) || (xPlayer.includes('sq10') && xPlayer.includes('sq11') && xPlayer.includes('sq12')) || (xPlayer.includes('sq20') && xPlayer.includes('sq21') && xPlayer.includes('sq22')) || (xPlayer.includes('sq00') && xPlayer.includes('sq11') && xPlayer.includes('sq22')) || (xPlayer.includes('sq02') && xPlayer.includes('sq11') && xPlayer.includes('sq20')) || (xPlayer.includes('sq00') && xPlayer.includes('sq10') && xPlayer.includes('sq20')) || (xPlayer.includes('sq01') && xPlayer.includes('sq11') && xPlayer.includes('sq21')) || (xPlayer.includes('sq02') && xPlayer.includes('sq12') && xPlayer.includes('sq22'))) 
+    {
+        playerTurn.innerText = "Player X Wins!"
+
+    }
+}
+
+const handleSq = function(e) {
+    placeMarker(e)
 }
 
 // ATTACH EVENT LISTENERS   
