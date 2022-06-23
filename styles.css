@@ -18,19 +18,21 @@ footer {
 
 /* Tic-tac-toe Board */
 main {
-    height: 60vh;
+    height: 45vh;
 }
 
 .square {
     border: 1px white solid;
-    font-size: 150px;
+    font-size: 130px;
     text-align: center;
 }
 
 .grid-container {
+    max-width: 600px;
+    margin: auto;
     display: grid;
-    grid-template-columns: repeat(3, 200px);
-    grid-template-rows: repeat(3, 200px);
+    grid-template-columns: repeat(3, 150px);
+    grid-template-rows: repeat(3, 150px);
     justify-content: center;
     align-content: center;
 }
