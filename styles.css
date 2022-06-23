@@ -8,19 +8,20 @@ body {
 }
 
 header, footer {
-    height: 10vh;
+    height: 15vh;
     text-align: center;
     font-size: 30px;
 }
 
 footer {
-    margin-top: 100px;
     font-size: 30px;
 }
 
 /* Tic-tac-toe Board */
 main {
     height: 50vh;
+    display: flex;
+    align-content: center;
 }
 
 .square {

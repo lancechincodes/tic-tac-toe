@@ -1,11 +1,12 @@
 // CONSTANT VALUES 
 const MAX_TURNS = 9
+// const WINNING_COMBOS = [['sq00', 'sq01', 'sq02'], ['sq10', 'sq11', 'sq12'], ['sq20', 'sq21', 'sq22'], ['sq00', 'sq11', 'sq22'], ['sq02', 'sq11', 'sq20'], ['sq00', 'sq10', 'sq20'], ['sq01', 'sq11', 'sq21'], ['sq02', 'sq12', 'sq22']]
 
 // STATE VARIABLES
 let turn = 'X'
 let xPlayer = []
 let oPlayer = []
-let winnerDeclared = false;
+let winnerDeclared = false
 
 // CACHED ELEMENT REFERENCES
 const gridContainer = document.querySelector('.grid-container')
@@ -76,17 +77,14 @@ const checkWin = function() {
     {
         winnerDeclared = true
         playerTurn.innerText = "Player O Wins!"
-        setTimeout(resetGame, 3000)
     }
     else if ((xPlayer.includes('sq00') && xPlayer.includes('sq01') && xPlayer.includes('sq02')) || (xPlayer.includes('sq10') && xPlayer.includes('sq11') && xPlayer.includes('sq12')) || (xPlayer.includes('sq20') && xPlayer.includes('sq21') && xPlayer.includes('sq22')) || (xPlayer.includes('sq00') && xPlayer.includes('sq11') && xPlayer.includes('sq22')) || (xPlayer.includes('sq02') && xPlayer.includes('sq11') && xPlayer.includes('sq20')) || (xPlayer.includes('sq00') && xPlayer.includes('sq10') && xPlayer.includes('sq20')) || (xPlayer.includes('sq01') && xPlayer.includes('sq11') && xPlayer.includes('sq21')) || (xPlayer.includes('sq02') && xPlayer.includes('sq12') && xPlayer.includes('sq22'))) 
     {
         winnerDeclared = true
         playerTurn.innerText = "Player X Wins!"
-        setTimeout(resetGame, 3000)
     }
     else if (xPlayer.length + oPlayer.length === MAX_TURNS) {
         playerTurn.innerText = "It is a draw!"
-        setTimeout(resetGame, 3000)
     }
 }
 
