@@ -84,6 +84,10 @@ const checkWin = function() {
         playerTurn.innerText = "Player X Wins!"
         setTimeout(resetGame, 3000)
     }
+    else if (xPlayer.length + oPlayer.length === MAX_TURNS) {
+        playerTurn.innerText = "It is a draw!"
+        setTimeout(resetGame, 3000)
+    }
 }
 
 const handleSq = function(e) {
